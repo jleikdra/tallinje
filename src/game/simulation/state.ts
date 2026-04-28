@@ -1,7 +1,6 @@
 import { ProgressState, PackProgress } from "./types";
 import { PROGRESS_VERSION } from "../../storage/progressSchema";
 
-
 export function defaultProgressState(): ProgressState {
   return {
     version: PROGRESS_VERSION,

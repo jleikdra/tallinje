@@ -1,11 +1,6 @@
 import { getMissionByIndex } from "../../content/missions/packMissions";
 import { evaluateMission, shouldShowHint } from "../rules/missionRules";
-import {
-  advanceMission,
-  awardStar,
-  countErrors,
-  recordError,
-} from "../state";
+import { advanceMission, awardStar, countErrors, recordError } from "../state";
 import { Mission, MissionResult, ProgressState } from "../types";
 
 export type MissionSubmission = {
@@ -44,10 +39,7 @@ export function submitMissionAnswer(
   return {
     state: advancedState,
     result,
-    nextMission: getMissionByIndex(
-      advancedState.currentPackId,
-      advancedState.currentMissionIndex
-    ),
+    nextMission: getMissionByIndex(advancedState.currentPackId, advancedState.currentMissionIndex),
     packCompleted,
     showHint: false,
   };

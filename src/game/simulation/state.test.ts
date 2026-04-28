@@ -1,11 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  advanceMission,
-  awardStar,
-  countErrors,
-  defaultProgressState,
-  recordError,
-} from "./state";
+import { advanceMission, awardStar, countErrors, defaultProgressState, recordError } from "./state";
 
 describe("progress state helpers", () => {
   it("creates the default prototype progress state", () => {
