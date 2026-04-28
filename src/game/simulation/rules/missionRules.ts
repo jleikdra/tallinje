@@ -1,10 +1,7 @@
 import { Mission, MissionResult, BuildLineInput } from "../types";
 import { validateBuildLineInput, hasEvenSpacing } from "./numberLineRules";
 
-export function evaluateMission(
-  mission: Mission,
-  answer: number | BuildLineInput
-): MissionResult {
+export function evaluateMission(mission: Mission, answer: number | BuildLineInput): MissionResult {
   switch (mission.type) {
     case "move_hare":
     case "predict_jump":
@@ -21,8 +18,9 @@ export function evaluateMission(
 
 function evaluateNumberAnswer(mission: Mission, answer: number): MissionResult {
   if (answer === mission.target) {
-    const { start, step } = mission.numberLine;
-    const explanation = buildPositiveExplanation(mission.type, answer, start, step);
+    const { step } = mission.numberLine;
+    const hareStart = mission.numberLine.highlightTicks[0] ?? mission.numberLine.start;
+    const explanation = buildPositiveExplanation(mission.type, answer, hareStart, step);
     return { correct: true, explanation };
   }
   return {
@@ -72,11 +70,8 @@ export function shouldShowHint(errorCount: number): boolean {
   return errorCount >= 2;
 }
 
-export function getSimplifiedChoices(
-  original: number[],
-  target: number
-): number[] {
-  if (original.includes(target)) return original;
+export function getSimplifiedChoices(original: number[], target: number): number[] {
+  if (original.includes(target)) return [...original].sort((a, b) => a - b);
   const simplified = [target];
   for (const c of original) {
     if (c !== target && simplified.length < 3) simplified.push(c);

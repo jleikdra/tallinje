@@ -36,7 +36,7 @@ export function awardStar(state: ProgressState, missionId: string): ProgressStat
 }
 
 export function recordError(state: ProgressState, missionId: string): ProgressState {
-  const errors = [...state.recentErrors.filter((e) => e !== missionId), missionId];
+  const errors = [...state.recentErrors, missionId];
   return { ...state, recentErrors: errors.slice(-10) };
 }
 
@@ -45,10 +45,7 @@ export function recordHintUsed(state: ProgressState, missionId: string): Progres
   return { ...state, usedHints: [...state.usedHints, missionId] };
 }
 
-export function advanceMission(
-  state: ProgressState,
-  packMissionCount: number
-): ProgressState {
+export function advanceMission(state: ProgressState, packMissionCount: number): ProgressState {
   const next = state.currentMissionIndex + 1;
   if (next >= packMissionCount) {
     const pack = state.packs[state.currentPackId];

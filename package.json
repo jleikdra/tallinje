@@ -1,10 +1,15 @@
 {
   "name": "tallinje",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Harehopp pa Tallinja — nettleserspill for barn om tallinjer",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "",
