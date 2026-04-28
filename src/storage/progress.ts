@@ -1,9 +1,6 @@
 import { ProgressState } from "../game/simulation/types";
-import {
-  PROGRESS_STORAGE_KEY,
-  PROGRESS_VERSION,
-  defaultProgressState,
-} from "../game/simulation/state";
+import { defaultProgressState } from "../game/simulation/state";
+import { PROGRESS_STORAGE_KEY, PROGRESS_VERSION } from "./progressSchema";
 
 export function saveProgress(state: ProgressState): void {
   try {

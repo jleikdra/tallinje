@@ -1,0 +1,228 @@
+:root {
+  color-scheme: light;
+  font-family: "Trebuchet MS", "Avenir Next", sans-serif;
+  --sky: linear-gradient(180deg, #f7f3dc 0%, #d7f1ff 52%, #fefaf1 100%);
+  --card: rgba(255, 251, 242, 0.92);
+  --ink: #28485f;
+  --ink-soft: #53758a;
+  --accent: #f48b57;
+  --accent-dark: #d26833;
+  --meadow: #88c594;
+  --line: #e6d5b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--sky);
+  color: var(--ink);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.eyebrow,
+.section-label,
+.subtitle,
+.topbar-stat,
+.feedback,
+.hint {
+  margin: 0;
+}
+
+.eyebrow,
+.section-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.subtitle {
+  margin-top: 8px;
+  max-width: 38rem;
+  font-size: 1rem;
+}
+
+.topbar-card,
+.card,
+.canvas-frame {
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 16px 40px rgba(52, 91, 109, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.topbar-card {
+  min-width: 180px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: var(--card);
+}
+
+.topbar-stat + .topbar-stat {
+  margin-top: 6px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(320px, 0.95fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.play-panel,
+.hud-panel {
+  min-height: 0;
+}
+
+.canvas-frame {
+  height: 100%;
+  min-height: 560px;
+  padding: 18px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.game-root {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #bde8ff 0%, #eff9ff 48%, #cbe7b0 100%);
+}
+
+.hud-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 24px;
+  background: var(--card);
+}
+
+.mission-text {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.35;
+}
+
+.feedback {
+  min-height: 2.8rem;
+  font-size: 1rem;
+  color: var(--accent-dark);
+}
+
+.hint {
+  min-height: 2.6rem;
+  color: var(--ink-soft);
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.choice-button,
+.primary-button {
+  min-height: 56px;
+  border: 0;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+}
+
+.choice-button {
+  background: #fff7e8;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px #ecd7b7;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.primary-button {
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color: white;
+  font-weight: 700;
+}
+
+.choice-button:hover,
+.choice-button:focus-visible,
+.primary-button:hover,
+.primary-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(87, 65, 36, 0.14);
+}
+
+.choice-button:disabled,
+.primary-button:disabled {
+  cursor: default;
+  opacity: 0.65;
+  transform: none;
+  box-shadow: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    padding: 16px;
+  }
+
+  .topbar,
+  .layout {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .topbar {
+    gap: 12px;
+  }
+
+  .canvas-frame,
+  .game-root {
+    min-height: 420px;
+  }
+}

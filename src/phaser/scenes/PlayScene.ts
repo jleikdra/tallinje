@@ -21,7 +21,6 @@ import { spawnStars } from "../view/effects/StarEffect";
 import { SceneBridge } from "../adapters/sceneBridge";
 import { HudOverlay } from "../../ui/hud/HudOverlay";
 import { ParentPanel } from "../../ui/overlays/ParentPanel";
-import { MenuOverlay } from "../../ui/menus/MenuOverlay";
 
 interface PlaySceneData {
   packId: string;
@@ -38,7 +37,6 @@ export class PlayScene extends Phaser.Scene {
   private bridge: SceneBridge | null = null;
   private hud: HudOverlay | null = null;
   private parentPanel: ParentPanel | null = null;
-  private menuOverlay: MenuOverlay | null = null;
 
   private answerLocked = false;
   private backBtn: Phaser.GameObjects.Text | null = null;
@@ -69,7 +67,6 @@ export class PlayScene extends Phaser.Scene {
     this.hud = new HudOverlay();
     this.bridge = new SceneBridge(this.hud);
     this.parentPanel = new ParentPanel();
-    this.menuOverlay = new MenuOverlay();
 
     this.bridge.onAnswer((answer) => {
       if (!this.answerLocked) this.handleAnswer(answer);
@@ -278,7 +275,6 @@ export class PlayScene extends Phaser.Scene {
       color: "#fffdf5",
       backgroundColor: "#4a8c2a",
       padding: { x: 20, y: 10 },
-      borderRadius: 10,
       fontFamily: "Segoe UI, Tahoma, Verdana, sans-serif",
     });
     menuBtn.setOrigin(0.5);

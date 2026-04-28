@@ -9,7 +9,6 @@ export class ParentPanel {
   private speechToggle: HTMLButtonElement;
   private packOverview: HTMLElement;
   private resetCallback: ResetCallback | null = null;
-  private gearPressStart = 0;
   private gearTimer: ReturnType<typeof setTimeout> | null = null;
 
   soundEnabled = true;
@@ -47,7 +46,6 @@ export class ParentPanel {
   private setupGearButton(): void {
     const gear = document.getElementById("gear-btn")!;
     gear.addEventListener("pointerdown", () => {
-      this.gearPressStart = Date.now();
       this.gearTimer = setTimeout(() => this.show(null), 1200);
     });
     gear.addEventListener("pointerup", () => {

@@ -45,8 +45,8 @@ function drawStar(
     path.push(cx + Math.cos(angle) * r, cy + Math.sin(angle) * r);
   }
   g.fillPoints(
-    path.reduce<{ x: number; y: number }[]>((acc, v, idx) => {
-      if (idx % 2 === 0) acc.push({ x: v, y: path[idx + 1] });
+    path.reduce<Phaser.Math.Vector2[]>((acc, v, idx) => {
+      if (idx % 2 === 0) acc.push(new Phaser.Math.Vector2(v, path[idx + 1]));
       return acc;
     }, []),
     true
